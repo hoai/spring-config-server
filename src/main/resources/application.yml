@@ -1,0 +1,19 @@
+server:
+  port: 4008
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    nonSecurePort: ${grpc.port}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:4006}/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+logging:
+  level:
+    com.lampart.microservicesdemoconfigserver: DEBUG
+    org.springframework.web: DEBUG
